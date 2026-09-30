@@ -1,163 +1,442 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daniel Izquierdo Cortazar | CEO of Bitergia</title>
-    <style>
-        :root {
-            --primary: #1a2a6c;
-            --secondary: #b21f1f;
-            --accent: #3498db;
-            --text: #2c3e50;
-            --bg: #ffffff;
-            --light-bg: #f8f9fa;
-        }
-        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); margin: 0; padding: 0; }
-        header { background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d); color: white; padding: 4rem 1rem; text-align: center; }
-        header h1 { margin: 0; font-size: 2.8rem; font-weight: 800; letter-spacing: -1px; }
-        header p { font-size: 1.3rem; opacity: 0.9; margin-top: 0.5rem; font-weight: 300; }
-        .links { display: flex; justify-content: center; gap: 2rem; margin-top: 1.5rem; }
-        .links a { text-decoration: none; color: white; font-weight: 600; border: 1px solid rgba(255,255,255,0.4); padding: 8px 16px; border-radius: 25px; transition: 0.3s; }
-        .links a:hover { background: white; color: var(--primary); }
-        
-        .container { max-width: 1000px; margin: 0 auto; padding: 3rem 1rem; }
-        .section { margin-bottom: 4rem; }
-        h2 { font-size: 1.8rem; color: var(--primary); border-left: 5px solid var(--secondary); padding-left: 15px; margin-bottom: 1.5rem; }
-        
-        .about-text { font-size: 1.15rem; color: #444; }
-        
-        table { width: 100%; border-collapse: collapse; margin-top: 1rem; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        th, td { text-align: left; padding: 16px; border-bottom: 1px solid #eee; }
-        th { background: var(--light-bg); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; color: #777; }
-        tr:hover { background-color: #fcfcfc; }
-        
-        .btn-sm { text-decoration: none; font-size: 0.8rem; padding: 4px 10px; border-radius: 4px; background: var(--accent); color: white; margin-right: 5px; }
-        .btn-doc { background: #27ae60; }
-        
-        .badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; margin-bottom: 5px; }
-        .badge-board { background: #e8f4fd; color: #2980b9; }
-        .badge-conf { background: #fef5e7; color: #d35400; }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daniel Izquierdo Cortázar — Open Source Health, Risk &amp; Metrics</title>
+<meta name="description" content="Daniel Izquierdo Cortázar, PhD — open source health, risk and metrics. Talks and discussions from 2025 and 2026.">
+<meta property="og:title" content="Daniel Izquierdo Cortázar — Open Source Health, Risk & Metrics">
+<meta property="og:description" content="Measuring open source: project health, supply-chain risk, data mining and impact. Talks 2025–2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f6f5f1;
+    --surface: #ffffff;
+    --ink: #16181d;
+    --muted: #5d6270;
+    --line: #e2e0d8;
+    --accent: #0f7a5c;
+    --accent-soft: #e3f1ec;
+    --warn: #b4561c;
+    --radius: 10px;
+    --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #111316; --surface: #181b20; --ink: #e9e8e4; --muted: #9aa0ab;
+      --line: #2a2e35; --accent: #4cc39b; --accent-soft: #16302a; --warn: #e3905a;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #111316; --surface: #181b20; --ink: #e9e8e4; --muted: #9aa0ab;
+    --line: #2a2e35; --accent: #4cc39b; --accent-soft: #16302a; --warn: #e3905a;
+  }
 
-        @media (max-width: 768px) { table { display: block; overflow-x: auto; } }
-    </style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: var(--sans); font-size: 17px; line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover { text-decoration-thickness: 2px; }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 16px; }
+
+  /* Nav */
+  nav { border-bottom: 1px solid var(--line); }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 16px; }
+  .brand { font-family: var(--mono); font-size: 14px; color: var(--ink); text-decoration: none; letter-spacing: .02em; }
+  .brand b { color: var(--accent); font-weight: 500; }
+  nav ul { list-style: none; display: flex; gap: 20px; margin: 0; padding: 0; font-size: 14px; }
+  nav ul a { color: var(--muted); text-decoration: none; }
+  nav ul a:hover { color: var(--ink); }
+
+  /* Hero */
+  header.hero { padding: 72px 0 48px; }
+  .eyebrow { font-family: var(--mono); font-size: 13px; color: var(--accent); letter-spacing: .06em; text-transform: uppercase; margin: 0 0 16px; }
+  h1 { font-size: clamp(34px, 6vw, 56px); line-height: 1.08; letter-spacing: -.02em; margin: 0 0 20px; font-weight: 700; max-width: 16ch; }
+  .lede { font-size: clamp(18px, 2.2vw, 21px); color: var(--muted); max-width: 60ch; margin: 0 0 32px; }
+  .lede strong { color: var(--ink); font-weight: 500; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+  .stat { background: var(--surface); padding: 18px 20px; }
+  .stat .n { font-family: var(--mono); font-size: 28px; font-weight: 500; line-height: 1.1; }
+  .stat .l { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+  section { padding: 56px 0; border-top: 1px solid var(--line); }
+  h2 { font-size: 28px; letter-spacing: -.01em; margin: 0 0 8px; }
+  .section-sub { color: var(--muted); margin: 0 0 32px; max-width: 62ch; }
+
+  /* Focus areas */
+  .focus { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; }
+  .card h3 { font-size: 17px; margin: 0 0 8px; display: flex; align-items: center; gap: 10px; }
+  .card h3 .k { font-family: var(--mono); font-size: 12px; color: var(--accent); background: var(--accent-soft); padding: 2px 7px; border-radius: 4px; font-weight: 500; }
+  .card p { margin: 0; color: var(--muted); font-size: 15px; }
+
+  /* Talks */
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 28px; }
+  .chip { font-family: var(--mono); font-size: 13px; border: 1px solid var(--line); background: var(--surface); color: var(--muted); padding: 6px 12px; border-radius: 999px; cursor: pointer; }
+  .chip:hover { color: var(--ink); border-color: var(--muted); }
+  .chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+  .year { display: grid; grid-template-columns: 90px 1fr; gap: 24px; margin-bottom: 40px; }
+  .year-label { font-family: var(--mono); font-size: 22px; font-weight: 500; position: sticky; top: 16px; align-self: start; color: var(--muted); }
+  .talks { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+  .talk { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 22px; }
+  .talk[hidden] { display: none; }
+  .meta { font-family: var(--mono); font-size: 13px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 14px; margin-bottom: 6px; }
+  .meta .event { color: var(--ink); font-weight: 500; }
+  .badge { font-family: var(--mono); font-size: 11px; letter-spacing: .04em; text-transform: uppercase; color: var(--warn); border: 1px solid currentColor; padding: 1px 6px; border-radius: 4px; }
+  .talk h3 { font-size: 19px; line-height: 1.35; margin: 0 0 8px; letter-spacing: -.005em; }
+  .talk p { margin: 0 0 12px; color: var(--muted); font-size: 15.5px; }
+  .with { font-size: 14px; color: var(--muted); margin: -4px 0 12px; }
+  .talk-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag { font-family: var(--mono); font-size: 12px; color: var(--accent); background: var(--accent-soft); padding: 2px 8px; border-radius: 4px; }
+  .links { display: flex; flex-wrap: wrap; gap: 14px; font-size: 14px; }
+  .empty { color: var(--muted); font-style: italic; }
+
+  .featured { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .feat { background: var(--ink); color: var(--bg); border-radius: var(--radius); padding: 24px; display: flex; flex-direction: column; gap: 10px; }
+  .feat .fk { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
+  :root .feat .fk { color: #6fd6b0; }
+  .feat h3 { font-size: 19px; line-height: 1.3; margin: 0; }
+  .feat .fm { font-family: var(--mono); font-size: 13px; opacity: .75; }
+  .feat p { margin: 0; font-size: 15px; opacity: .85; flex: 1; }
+  .feat a { color: #6fd6b0; font-size: 14px; }
+  @media (max-width: 760px) { .featured { grid-template-columns: 1fr; } }
+
+  /* About */
+  .about { display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; }
+  .about p { margin: 0 0 16px; }
+  .roles { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--line); }
+  .roles li { padding: 0 0 16px 18px; position: relative; font-size: 15px; }
+  .roles li::before { content: ""; position: absolute; left: -6px; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--surface); border: 2px solid var(--accent); }
+  .roles .r { font-weight: 600; display: block; }
+  .roles .d { color: var(--muted); font-family: var(--mono); font-size: 12px; }
+
+  footer { border-top: 1px solid var(--line); padding: 40px 0 56px; }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; align-items: center; }
+  .contact { display: flex; flex-wrap: wrap; gap: 18px; font-size: 15px; }
+  .small { font-size: 13px; color: var(--muted); font-family: var(--mono); }
+  .theme-toggle { background: none; border: 1px solid var(--line); color: var(--muted); border-radius: 6px; padding: 4px 10px; font-family: var(--mono); font-size: 12px; cursor: pointer; }
+
+  @media (max-width: 760px) {
+    nav ul { display: none; }
+    header.hero { padding: 48px 0 32px; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .focus { grid-template-columns: 1fr; }
+    .year { grid-template-columns: 1fr; gap: 12px; }
+    .year-label { position: static; }
+    .about { grid-template-columns: 1fr; }
+  }
+</style>
 </head>
 <body>
 
-<header>
-    <h1>Daniel Izquierdo Cortazar</h1>
-    <p>CEO of Bitergia | Open Source & InnerSource Strategist</p>
-    <div class="links">
-        <a href="https://www.linkedin.com/in/dizquierdo/">LinkedIn</a>
-        <a href="https://scholar.google.com/citations?user=YOUR_ID">Google Scholar</a>
-        <a href="https://bitergia.com">Bitergia</a>
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">dicortazar<b>/</b>oss-health</a>
+    <ul>
+      <li><a href="#focus">Focus</a></li>
+      <li><a href="#talks">Talks</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <p class="eyebrow">Daniel Izquierdo Cortázar, PhD</p>
+    <h1>Measuring what keeps open source alive.</h1>
+    <p class="lede">
+      Twenty years mining software repositories to answer one question: <strong>is this project healthy, and what does it mean for the people who depend on it?</strong>
+      I work on open source health, supply-chain risk, metrics and impact measurement — from single communities to the global public code landscape.
+    </p>
+    <div class="stats" aria-label="Talks at a glance">
+      <div class="stat"><div class="n" id="stat-talks">17</div><div class="l">sessions, 2025–2026</div></div>
+      <div class="stat"><div class="n" id="stat-events">14</div><div class="l">events</div></div>
+      <div class="stat"><div class="n">9</div><div class="l">countries</div></div>
+      <div class="stat"><div class="n">~20y</div><div class="l">in OSS analytics</div></div>
     </div>
+  </div>
 </header>
 
-<div class="container">
-    
-    <section class="section">
-        <h2>About Me</h2>
-        <p class="about-text">
-            I am the co-founder and CEO of <strong>Bitergia</strong>. My expertise lies in software development analytics, focusing on helping organizations understand and optimize their <strong>Open Source</strong> and <strong>InnerSource</strong> ecosystems. I am a passionate advocate for data-driven decisions in community health and digital sovereignty.
-        </p>
-    </section>
+<section id="focus">
+  <div class="wrap">
+    <h2>What I work on</h2>
+    <p class="section-sub">The common thread: turning the activity traces open source leaves behind into evidence people can act on.</p>
+    <div class="focus">
+      <div class="card"><h3><span class="k">01</span>Project health</h3><p>Is a project thriving, stagnating or quietly dying? Maintainer load, responsiveness, release cadence and community dynamics as a measurable layer.</p></div>
+      <div class="card"><h3><span class="k">02</span>OSS risk</h3><p>Health as the missing piece of supply-chain risk management — beyond licenses and CVEs, towards dependency resilience and compliance.</p></div>
+      <div class="card"><h3><span class="k">03</span>Data mining</h3><p>Large-scale analysis of software repositories, from GrimoireLab and CHAOSS tooling to the Software Heritage archive.</p></div>
+      <div class="card"><h3><span class="k">04</span>Metrics &amp; models</h3><p>Metrics that matter for OSPOs, InnerSource programs and maintainers — and how to avoid the ones that don't.</p></div>
+      <div class="card"><h3><span class="k">05</span>Impact measurement</h3><p>Showing the value of open source investment and public funding, and how public institutions contribute to code as a digital public good.</p></div>
+      <div class="card"><h3><span class="k">06</span>Geopolitics of code</h3><p>Digital sovereignty, cross-border collaboration and fragmentation — read through data rather than rhetoric.</p></div>
+    </div>
+  </div>
+</section>
 
-    <section class="section">
-        <h2>Boards & Leadership Roles</h2>
-        <table>
-            <thead>
-                <tr><th>Organization / Event</th><th>Role</th><th>Period</th></tr>
-            </thead>
-            <tbody>
-                <tr><td><span class="badge badge-board">InnerSource Commons</span></td><td>Chair & Member of the Board of Directors</td><td>2025 - Present</td></tr>
-                <tr><td><span class="badge badge-board">Apereo Foundation</span></td><td>Member of the Board of Directors</td><td>2024 - Present</td></tr>
-                <tr><td><span class="badge badge-board">CHAOSS (Linux Foundation)</span></td><td>Co-Founder & Governing Board Member</td><td>2017 - Present</td></tr>
-                <tr><td><span class="badge badge-conf">ICSE 2025</span></td><td>Organizing Committee Member</td><td>2025</td></tr>
-                <tr><td><span class="badge badge-conf">MSR 2024 / 2025</span></td><td>FOSS Award Committee Member</td><td>2024 - 2025</td></tr>
-            </tbody>
-        </table>
-    </section>
+<section id="talks">
+  <div class="wrap">
+    <h2>Highlights</h2>
+    <p class="section-sub">The stages I'm proudest of.</p>
+    <div class="featured" id="featured"></div>
 
-    <section class="section">
-        <h2>Public Appearances & Publications (2025)</h2>
-        <table>
-            <thead>
-                <tr><th>Event / Venue</th><th>Title / Contribution</th><th>Location</th><th>Resources</th></tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>InnerSource Summit</td>
-                    <td>InnerSource Value Metrics (Talk)</td>
-                    <td>Berlin, Germany</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td>FINOS & ISC</td>
-                    <td><strong>InnerSource Value Metrics (Whitepaper)</strong></td>
-                    <td>Online</td>
-                    <td><a href="https://www.finos.org/innersource-value-metrics-white-paper" class="btn-sm btn-doc">Read Doc</a></td>
-                </tr>
-                <tr>
-                    <td>MSR / ICSE 2025</td>
-                    <td>Measuring InnerSource Value</td>
-                    <td>Ottawa, Canada</td>
-                    <td><a href="https://drive.google.com/open?id=1H0h48yJamTRdE9Q27cGnDaP9lbvzmVPy" class="btn-sm">Slides</a></td>
-                </tr>
-                <tr>
-                    <td>UN Open Source Week</td>
-                    <td>Scaling Open Source Principles (Panel Lead)</td>
-                    <td>New York, USA</td>
-                    <td><a href="https://www.un.org/digital-emerging-technologies/sites/www.un.org.techenvoy/files/UN_Open_Source_Week_Conference_Report_2025.pdf" class="btn-sm">Report</a></td>
-                </tr>
-                <tr>
-                    <td>Eclipse Community Day</td>
-                    <td>Standardizing Corporate OS Risk Practices</td>
-                    <td>Madrid, Spain</td>
-                    <td><a href="https://www.eclipse.org/events/2025/oscd/presentations/12-Daniel-Izquierdo.pdf" class="btn-sm">Slides</a></td>
-                </tr>
-                <tr>
-                    <td>OSS Summit Europe</td>
-                    <td>Europe China Open Source: Digital Sovereignty</td>
-                    <td>Amsterdam, NL</td>
-                    <td>-</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
+    <h2 style="margin-top:56px">All talks &amp; discussions</h2>
+    <p class="section-sub">Keynotes, talks and panels from 2025 and 2026. Filter by topic.</p>
+    <div class="filters" role="group" aria-label="Filter talks by topic" id="filters"></div>
+    <div id="talk-list"></div>
+  </div>
+</section>
 
-    <section class="section">
-        <h2>Speaking Engagements (2024)</h2>
-        <table>
-            <thead>
-                <tr><th>Event</th><th>Topic</th><th>Location</th></tr>
-            </thead>
-            <tbody>
-                <tr><td>InnerSource Gathering Tokyo</td><td>Welcome Address & President Opening</td><td>Tokyo (Virtual)</td></tr>
-                <tr><td>Codemotion Madrid</td><td>A Brief Analysis of Code Review Activities</td><td>Madrid, Spain</td></tr>
-                <tr><td>Peking University</td><td>Ground-truth dataset of safety bugs in Linux</td><td>Beijing, China</td></tr>
-                <tr><td>AMTEGA</td><td>InnerSource Initiatives in Galicia</td><td>Galicia, Spain</td></tr>
-            </tbody>
-        </table>
-    </section>
+<section id="about">
+  <div class="wrap about">
+    <div>
+      <h2>About</h2>
+      <p>I started as a researcher at Universidad Rey Juan Carlos, taking part in EU-funded projects on open source metrics, and earned a PhD in 2012 analysing developer activity patterns and bugs in the Mozilla community.</p>
+      <p>I co-founded Bitergia, which spent over a decade providing software development analytics for open source and InnerSource ecosystems, and later led it as CEO. Along the way I served on the CHAOSS governing board and helped build the InnerSource Commons Foundation.</p>
+      <p>Today I focus on open source intelligence at scale: most recently co-developing the methodology behind <a href="https://www.softwareheritage.org/2026/07/01/public_code_2026_launch/">The State of Public Code</a> with Software Heritage, UNESCO and UN-ODET — an evidence-based look at how governments use and contribute to open source.</p>
+    </div>
+    <ul class="roles" aria-label="Selected roles">
+      <li><span class="r">State of Public Code report</span><span class="d">Software Heritage · 2026</span></li>
+      <li><span class="r">Co-founder &amp; former CEO</span><span class="d">Bitergia</span></li>
+      <li><span class="r">Governing Board, GrimoireLab seat</span><span class="d">CHAOSS · 2019–2026</span></li>
+      <li><span class="r">President / Chair</span><span class="d">InnerSource Commons Foundation</span></li>
+      <li><span class="r">Board Director</span><span class="d">Apereo Foundation · 2024–2027</span></li>
+      <li><span class="r">Program Committee</span><span class="d">Open Source Summit NA &amp; EU · 2025</span></li>
+      <li><span class="r">PhD, Free Software Engineering</span><span class="d">Universidad Rey Juan Carlos · 2012</span></li>
+    </ul>
+  </div>
+</section>
 
-    <section class="section">
-        <h2>Past Highlights (2023)</h2>
-        <p>Keynote speaker and presenter at international venues including:</p>
-        <p>
-            <span class="badge badge-conf">FOSS Backstage (Berlin)</span>
-            <span class="badge badge-conf">Open Source Summit NA (Vancouver)</span>
-            <span class="badge badge-conf">Ubuntu Summit (Riga)</span>
-            <span class="badge badge-conf">API Days (Paris)</span>
-            <span class="badge badge-conf">CHAOSScon (Vancouver)</span>
-        </p>
-    </section>
-
-</div>
-
-<footer style="text-align: center; padding: 4rem 1rem; background: var(--light-bg); color: #888;">
-    <p>&copy; 2026 Daniel Izquierdo Cortazar. Built with Open Source passion.</p>
+<footer id="contact">
+  <div class="wrap">
+    <div class="contact">
+      <a href="https://www.linkedin.com/in/dicortazar/">LinkedIn</a>
+      <a href="https://github.com/dicortazar">GitHub</a>
+      <a href="https://scholar.google.com/citations?user=KNHcPS4AAAAJ">Google Scholar</a>
+      <a href="https://speakerdeck.com/bitergia">Slides (Speaker Deck)</a>
+    </div>
+    <div class="small">
+      Last updated Sept 2026 ·
+      <button class="theme-toggle" id="theme-toggle" type="button">theme</button>
+    </div>
+  </div>
 </footer>
 
+<script>
+  // ---- Talk data: edit this list to add or change talks ----
+  const TAGS = {
+    health: "project health",
+    risk: "risk & compliance",
+    metrics: "metrics",
+    impact: "impact",
+    public: "public code",
+    geo: "sovereignty",
+    innersource: "innersource"
+  };
+
+  const TALKS = [
+    {
+      year: 2026, date: "8 Oct 2026", event: "Open Source Summit Europe", place: "Prague, CZ", upcoming: true,
+      title: "What You Need To Know About Project Health",
+      blurb: "Organisations rarely have a systematic way to tell whether the projects they depend on are thriving or fading — scanners cover licenses and known vulnerabilities, not maintainer burnout or stalled releases. This talk frames project health as the missing layer of supply-chain risk management and offers a practical framework for evaluating dependencies.",
+      tags: ["health", "risk", "metrics"],
+      links: [["Schedule", "https://osselceu2026.sched.com/2026-10-08/list/descriptions/company/Any"]]
+    },
+    {
+      year: 2026, date: "24 Jun 2026", event: "UN Open Source Week 2026", place: "New York, US",
+      title: "The State of Public Code & the launch of the Public Code Observatory",
+      with: "Roberto Di Cosmo, Bastien Guerry (Software Heritage)",
+      blurb: "Co-presented the first evidence-based global picture of how governments use and contribute to open source, built on the Software Heritage archive with UNESCO and UN-ODET. The cross-border collaboration analysis — open source connecting institutions without formal bilateral agreements — was the moment that landed in the room.",
+      tags: ["public", "impact", "geo"],
+      links: [["Session recap", "https://www.softwareheritage.org/2026/07/08/software-heritage-un-open-source-week-2026/"], ["Report launch", "https://www.softwareheritage.org/2026/07/01/public_code_2026_launch/"]]
+    },
+    {
+      year: 2026, date: "6 Feb 2026", event: "National Open Source Innovation Summit", place: "Ireland",
+      title: "Europe–China Open Source",
+      blurb: "An exploration of global open source dynamics: how collaboration flows between regions, and what the data says about sovereignty and interdependence.",
+      tags: ["geo", "metrics"],
+      links: [["Agenda", "https://summit.openirelandnetwork.com/agenda"]]
+    },
+    {
+      year: 2026, date: "1 Feb 2026", event: "FOSDEM 2026 · Main Track", place: "Brussels, BE",
+      featured: "Main Track · FOSDEM 2026",
+      title: "The Geopolitics of Code: From Digital Sovereignty to Global Fragmentation",
+      with: "Jesus M. Gonzalez-Barahona",
+      blurb: "Open source is now treated as critical global infrastructure, which pulls it into national-security agendas. The talk examined the governance risks of that shift: open source's strength is shared, mutualised risk, and fragmentation along national and corporate lines erodes exactly that.",
+      tags: ["geo", "risk"],
+      links: [["Talk page & video", "https://fosdem.org/2026/schedule/event/XWSW3R-the_geopolitics_of_open_source_software/"]]
+    },
+    {
+      year: 2026, date: "29 Jan 2026", event: "CHAOSScon Europe 2026", place: "Brussels, BE",
+      title: "Speaker — CHAOSScon Europe",
+      blurb: "The community gathering on open source project health metrics and tooling, co-located with FOSDEM.",
+      tags: ["health", "metrics"],
+      links: [["Speakers", "https://chaoss.community/chaosscon-2026-eu/agenda/"]]
+    },
+
+    {
+      year: 2025, date: "11–12 Dec 2025", event: "Open Compliance Summit · Keynote", place: "Tokyo, JP",
+      featured: "Keynote · Open Compliance Summit",
+      title: "Beyond Open Source Compliance: How InnerSource Reveals Hidden Organizational Challenges",
+      with: "Yuki Hattori (InnerSource Commons Foundation)",
+      blurb: "Compliance programmes surface symptoms; collaboration data shows the organisational causes behind them. A keynote on using InnerSource signals to understand how organisations really work with code.",
+      tags: ["risk", "innersource"],
+      links: [["Schedule", "https://opencompliancesummit2025.sched.com/"]]
+    },
+    {
+      year: 2025, date: "11–12 Dec 2025", event: "Open Compliance Summit", place: "Tokyo, JP",
+      title: "Delicious Slices of Compliance — A Swiss Cheese Model Perspective",
+      blurb: "Applying the Swiss cheese model of layered defences to open source compliance: no single control catches everything, so the question becomes where the holes line up.",
+      tags: ["risk"],
+      links: [["Schedule", "https://opencompliancesummit2025.sched.com/"]]
+    },
+    {
+      // TODO: add the exact date, talk title and a link (slides/video) if you have one
+      year: 2025, date: "2025", event: "Huawei InnerSource Annual Summit · Keynote", place: "Xi'an, CN",
+      featured: "Keynote · Huawei InnerSource Annual Summit",
+      title: "Keynote — InnerSource Annual Summit",
+      blurb: "Keynote at Huawei's internal InnerSource Annual Summit on measuring and scaling InnerSource inside one of the world's largest engineering organisations.",
+      tags: ["innersource", "metrics"],
+      links: []
+    },
+    {
+      year: 2025, date: "13–15 Nov 2025", event: "Nerdearla España 2025", place: "Madrid, ES",
+      title: "Speaker — Nerdearla España",
+      blurb: "First Spanish edition of the largest free tech and open source event in the Spanish-speaking world.",
+      tags: ["metrics"],
+      links: [["Speaker page", "https://nerdearla.es/speakers/daniel-izquierdo-cortazar/"]]
+    },
+    {
+      year: 2025, date: "13 Nov 2025", event: "InnerSource Summit 2025 · Berlin hub", place: "Berlin, DE · global",
+      title: "InnerSource Value Metrics",
+      with: "Chamindra de Silva (Citi)",
+      blurb: "How to demonstrate the value of InnerSource — reuse, collaboration, removed inefficiencies — with metrics leadership can act on. Also opened the Berlin hub of the 24-hour, 10th-anniversary summit.",
+      tags: ["innersource", "metrics", "impact"],
+      links: [["Programme", "https://innersourcecommons.org/events/isc-2025/"]]
+    },
+    {
+      year: 2025, date: "27 Aug 2025", event: "Open Source Summit Europe", place: "Amsterdam, NL",
+      title: "Panel: Digital Commons — Technological Building Blocks for European Digital Sovereignty",
+      with: "Nick Gates (OpenForum Europe), Adrienn Lawson (Linux Foundation)",
+      blurb: "What a European digital commons actually needs to be built on, and how to measure whether it is working.",
+      tags: ["geo", "public"],
+      links: [["Schedule", "https://osseu2025.sched.com/speaker/dizquierdo"]]
+    },
+    {
+      year: 2025, date: "27 Aug 2025", event: "Open Source Summit Europe", place: "Amsterdam, NL",
+      title: "Europe–China Open Source: Digital Sovereignty & Sustained Collaboration",
+      with: "Yehui Wang (Huawei)",
+      blurb: "A data-informed look at collaboration between European and Chinese open source ecosystems and how it holds up under sovereignty pressures.",
+      tags: ["geo", "metrics"],
+      links: [["Schedule", "https://osseu2025.sched.com/speaker/dizquierdo"]]
+    },
+    {
+      year: 2025, date: "26 Aug 2025", event: "Open Source Summit Europe", place: "Amsterdam, NL",
+      title: "From Backlog to Breakthrough: How FreeBSD and Bitergia Tackled 7k+ Bugs With Data-Driven Dashboards",
+      with: "Alice Sowerby (FreeBSD Foundation), Miguel Ángel Fernández, Moin Rahman (FreeBSD)",
+      blurb: "FreeBSD faced a backlog of 7,000+ bug reports. Work funded by Germany's Sovereign Tech Agency turned it into a data problem: reusable metrics and open tooling to triage intelligently rather than close issues by age.",
+      tags: ["health", "metrics", "impact"],
+      links: [["Session", "https://osseu2025.sched.com/event/25VsE"]]
+    },
+    {
+      year: 2025, date: "Jun 2025", event: "UN Open Source Week 2025", place: "New York, US",
+      title: "The UN's first InnerSource panel",
+      with: "Mercedes-Benz Tech Innovation, Bosch Digital, CURIOSS, BBC, Dutch Tax Administration",
+      blurb: "Moderated the first InnerSource panel at the United Nations, presenting the InnerSource report and discussing open collaboration inside large public and private organisations.",
+      tags: ["innersource", "public"],
+      links: [["Press release", "https://www.prnewswire.com/news-releases/united-nations-forum-elevates-innersource-as-essential-tool-for-open-source-scaling-302487179.html"], ["Programme", "https://www.un.org/digital-emerging-technologies/content/open-source-week-2025"]]
+    },
+    {
+      year: 2025, date: "12 Mar 2025", event: "InnerSource Gathering Berlin", place: "Berlin, DE",
+      title: "Creation and Application of InnerSource Maturity Models",
+      blurb: "Lessons from building and applying an InnerSource maturity model across several organisations — what to measure and how to use it.",
+      tags: ["innersource", "metrics"],
+      links: [["Programme", "https://gatherings.innersourcecommons.org/berlin-2025/"]]
+    },
+    {
+      year: 2025, date: "11 Mar 2025", event: "FOSS Backstage 2025", place: "Berlin, DE",
+      title: "The Value of OSS Management for Risk Mitigation",
+      with: "Ana Jiménez Santamaría",
+      blurb: "Treating upstream projects as partners rather than risks to eliminate. A real-case analytical framework showing how open source management helps communicate risk to executives, spot engineering bottlenecks and build resilience with maintainers.",
+      tags: ["risk", "health"],
+      links: [["Session", "https://25.foss-backstage.de/session/the-value-of-oss-management-for-risk-mitigation/"]]
+    },
+    {
+      year: 2025, date: "30 Jan 2025", event: "CHAOSScon Europe 2025", place: "Brussels, BE",
+      title: "What is CHAOSS and an Overview of GrimoireLab 2.0",
+      blurb: "Opening session: the CHAOSS approach to community health analytics and what's new in GrimoireLab 2.0 for collecting and analysing project data.",
+      tags: ["health", "metrics"],
+      links: [["Programme", "https://chaoss.community/chaosscon-2025-eu/"]]
+    }
+  ];
+
+  // ---- Rendering ----
+  const list = document.getElementById("talk-list");
+  const filters = document.getElementById("filters");
+  let active = "all";
+
+  function esc(s) { return String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])); }
+
+  function render() {
+    const years = [...new Set(TALKS.map(t => t.year))].sort((a, b) => b - a);
+    list.innerHTML = years.map(y => {
+      const items = TALKS.filter(t => t.year === y && (active === "all" || t.tags.includes(active)));
+      const body = items.length ? items.map(t => `
+        <li class="talk">
+          <div class="meta">
+            <span>${esc(t.date)}</span><span class="event">${esc(t.event)}</span><span>${esc(t.place)}</span>
+            ${t.upcoming ? '<span class="badge">upcoming</span>' : ""}
+          </div>
+          <h3>${esc(t.title)}</h3>
+          ${t.with ? `<div class="with">with ${esc(t.with)}</div>` : ""}
+          <p>${esc(t.blurb)}</p>
+          <div class="talk-foot">
+            <div class="tags">${t.tags.map(k => `<span class="tag">${esc(TAGS[k])}</span>`).join("")}</div>
+            <div class="links">${t.links.map(([l, u]) => `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(l)} ↗</a>`).join("")}</div>
+          </div>
+        </li>`).join("") : `<li class="empty">No ${esc(TAGS[active])} talks this year.</li>`;
+      return `<div class="year"><div class="year-label">${y}</div><ul class="talks">${body}</ul></div>`;
+    }).join("");
+  }
+
+  function renderFilters() {
+    const opts = [["all", "all"], ...Object.entries(TAGS)];
+    filters.innerHTML = opts.map(([k, l]) => `<button class="chip" type="button" data-k="${k}" aria-pressed="${k === active}">${esc(l)}</button>`).join("");
+  }
+
+  filters.addEventListener("click", e => {
+    const b = e.target.closest(".chip"); if (!b) return;
+    active = b.dataset.k; renderFilters(); render();
+  });
+
+  document.getElementById("featured").innerHTML = TALKS.filter(t => t.featured).map(t => `
+    <article class="feat">
+      <span class="fk">${esc(t.featured)}</span>
+      <h3>${esc(t.title)}</h3>
+      <span class="fm">${esc(t.date)} · ${esc(t.place)}</span>
+      <p>${esc(t.blurb)}</p>
+      ${t.links[0] ? `<a href="${esc(t.links[0][1])}" target="_blank" rel="noopener">${esc(t.links[0][0])} ↗</a>` : ""}
+    </article>`).join("");
+
+  document.getElementById("stat-talks").textContent = TALKS.length;
+  document.getElementById("stat-events").textContent = new Set(TALKS.map(t => t.event.split(" · ")[0].replace(/ 20\d\d$/, "") + t.year)).size;
+
+  renderFilters(); render();
+
+  // ---- Theme toggle ----
+  document.getElementById("theme-toggle").addEventListener("click", () => {
+    const root = document.documentElement;
+    const dark = root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+    root.dataset.theme = dark ? "light" : "dark";
+  });
+</script>
 </body>
 </html>
